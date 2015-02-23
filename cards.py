@@ -2,7 +2,7 @@
 """
 Created on Sun Feb 08 19:50:02 2015
 
-@author: Jonny
+@author: Jonny and John Smith
 """
 
 class Card(object):
@@ -78,3 +78,39 @@ class Card(object):
     def __repr__(self):
         """Print Card"""
         return self.__str__()
+        
+import random 
+
+class Deck(object):
+    """Create Deck object"""
+    def __init__(self, cardlist=[]):
+        self.__cards = cardlist
+
+    def show_cards(self):
+        """show the cards in the deck"""
+        return self.__cards
+
+    def shuffle(self,n=1):
+        """Shuffle the deck n times"""
+        for _ in range(n):
+            random.shuffle(self.__cards)
+
+    def draw(self, n):
+        """Draw n cards from the deck"""
+        draw=[]
+        for _ in range(n):
+            drawn_card = self.__cards.pop(0)
+            draw.append(drawn_card)
+        return draw
+
+    def size(self):
+        """Find the number of cards in the deck"""
+        return len(self.__cards)
+
+def create_cards():
+    hear=[Card(x, 'h') for x in range(1,14)]
+    diam=[Card(x, 'd') for x in range(1,14)]
+    spade=[Card(x, 's') for x in range(1,14)]
+    club=[Card(x, 'c') for x in range(1,14)]
+    return hear + diam + spade + club
+    
